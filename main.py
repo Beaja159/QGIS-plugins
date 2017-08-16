@@ -4,8 +4,8 @@ import json
 
 
 def main():
-    with open('in.json') as fin:
-        data = json.loads(fin.read().decode("utf-8-sig").encode("utf-8"))
+    with open('in.json', encoding='utf-8') as fin:
+        data = json.loads(fin.read().encode("utf-8"))
 
     for feature in data['features']:
         feature['properties']['comments'] = []
@@ -27,7 +27,7 @@ def main():
         del feature['properties']['2-opis']
         del feature['properties']['3-symbol']
 
-    with open('out.json', 'w') as fout:
+    with open('out.json', 'w', encoding='utf-8') as fout:
         json.dump(data, fout)
 
 
